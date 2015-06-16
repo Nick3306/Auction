@@ -10,6 +10,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.earth2me.essentials.Essentials;
+import com.earth2me.essentials.api.Economy;
+
+
 public class AuctionCommand implements CommandExecutor
 {
 
@@ -43,27 +47,32 @@ public class AuctionCommand implements CommandExecutor
 							else
 							{
 								sender.sendMessage("Your starting bid is not a valid number!");
+								return false;
 							}
 						}
 						else
 						{
 							sender.sendMessage("You do not have eough of that Item!");
+							return false;
 						}
 					}
 					else
 					{
 						sender.sendMessage("That is not a valid block!");
+						return false;
 					}
 				}
 				else
 				{
 					sender.sendMessage("Too few arguments for sell!");
 					sender.sendMessage("Usage: /auction sell (blockID)(ammount)(starting bid)");
+					return false;
 				}
 				
 			}
 		
 		return false;
+		
 	}
 	public static boolean isNumeric(String str)
 	{
