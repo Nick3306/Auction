@@ -8,7 +8,9 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import com.earth2me.essentials.Essentials;
 import com.earth2me.essentials.api.Economy;
@@ -42,14 +44,21 @@ public class AuctionCommand implements CommandExecutor
 						{
 							if(isNumeric(args[3]))
 							{
-								
+								if((Integer.parseInt(args[1]) >=256 && Integer.parseInt(args[1]) <=258) || (Integer.parseInt(args[1]) >= 267 && Integer.parseInt(args[1]) <= 279) || (Integer.parseInt(args[1]) >= 283 && Integer.parseInt(args[1]) <= 286) || (Integer.parseInt(args[1]) >= 290 && Integer.parseInt(args[1]) <= 294) || (Integer.parseInt(args[1]) >= 298 && Integer.parseInt(args[1]) <= 317))
+								{
+									sender.sendMessage("Armor and tools are not able to be auctioned yet");
+								}
+								else
+								{
+									ItemStack items  = player.getItemInHand();
+								}
 							}
 							else
 							{
 								sender.sendMessage("Your starting bid is not a valid number!");
 								return false;
 							}
-						}
+						}}
 						else
 						{
 							sender.sendMessage("You do not have eough of that Item!");
@@ -68,12 +77,12 @@ public class AuctionCommand implements CommandExecutor
 					sender.sendMessage("Usage: /auction sell (blockID)(ammount)(starting bid)");
 					return false;
 				}
-				
-			}
-		
+		}
 		return false;
-		
 	}
+	
+
+		
 	public static boolean isNumeric(String str)
 	{
 	  NumberFormat formatter = NumberFormat.getInstance();
