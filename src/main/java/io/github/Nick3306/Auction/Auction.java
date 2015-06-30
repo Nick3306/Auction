@@ -14,11 +14,12 @@ public class Auction
 	double highestBid;
 	ItemStack items;
 	
-	Auction(Player seller, double startingBid, Player owner)
+	Auction(Player seller, double startingBid, ItemStack items)
 	{
 		this.seller = seller;
 		this.highestBid = startingBid;
-		this.highestBidder = owner;
+		this.highestBidder = seller;
+		this.items = items;
 	}
 	
 	void setSeller(Player seller)

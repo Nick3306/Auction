@@ -1,5 +1,6 @@
 package io.github.Nick3306.Auction;
 
+import io.github.Nick3306.Auction.Main;
 import java.text.NumberFormat;
 import java.text.ParsePosition;
 
@@ -19,6 +20,11 @@ import com.earth2me.essentials.api.Economy;
 public class AuctionCommand implements CommandExecutor
 {
 
+	private Main plugin;
+	public void Auction(Main plugin)
+	 {
+	   this.plugin = plugin;
+	 }
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) 
 	{
@@ -51,6 +57,10 @@ public class AuctionCommand implements CommandExecutor
 								else
 								{
 									ItemStack items  = player.getItemInHand();
+									player.setItemInHand(null);
+									Auction a = new Auction(player, Double.parseDouble(args[3]), items);
+									this.plugin.auctions.add(a);
+									sender.sendMessage("Your items have been put up for auction");
 								}
 							}
 							else
